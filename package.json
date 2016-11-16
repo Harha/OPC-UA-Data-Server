@@ -1,0 +1,25 @@
+{
+  "name": "opc_ua_data_server",
+  "version": "0.0.1",
+  "description": "socket.io server backend for OPC UA Data Visualizer, MongoDB as database.",
+  "main": "main.js",
+  "scripts": {
+    "test": "test",
+    "serve": "node main.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Harha/OPC-UA-Data-Server.git"
+  },
+  "author": "harha",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Harha/OPC-UA-Data-Server/issues"
+  },
+  "homepage": "https://github.com/Harha/OPC-UA-Data-Server#readme",
+  "dependencies": {
+    "mongodb": "^2.2.11",
+    "socket.io": "1.5.1",
+    "winston": "^2.3.0"
+  }
+}
