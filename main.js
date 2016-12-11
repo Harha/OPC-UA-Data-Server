@@ -41,13 +41,7 @@ mongo.connect(settings.db_addr, settings.db_settings, function(err, db) {
 			}).limit(1);
 
 			results.toArray(function(err, docs) {
-				// get the document instance
-				var document = docs[0];
-
-				ws.log('info', 'output | opcuavariable, identifier: ' + document.identifier + ', timestamp: ' + document.serverTimeStamp.toISOString());
-
-				// send the requested variable to client
-				socket.emit('opcuavariable', document);
+				socket.emit('opcuavariable', docs[0]);
 			});
 		});
 
