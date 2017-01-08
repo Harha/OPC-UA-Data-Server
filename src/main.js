@@ -7,7 +7,7 @@ var mongo = require('mongodb').MongoClient;
 var settings = {
 	addr: '0.0.0.0',
 	port: 9091,
-	db_addr: 'mongodb://harha.us.to:27017/iotgateway',
+	db_string: 'mongodb://user:pwd@harha.us.to:27017/opc_ua_data?authSource=admin',
 	db_settings: {
 		auto_reconnect: true,
 		native_parser: true
@@ -15,8 +15,8 @@ var settings = {
 };
 
 // mongodb, instantiate client
-mongo.connect(settings.db_addr, settings.db_settings, function(err, db) {
-	ws.log('info', 'mongodb client connected to ' + settings.db_addr);
+mongo.connect(settings.db_string, settings.db_settings, function(err, db) {
+	ws.log('info', 'mongodb client connected to ' + settings.db_string);
 
 	// socket.io, connection handling
 	io.on('connection', function(socket) {
@@ -37,7 +37,7 @@ mongo.connect(settings.db_addr, settings.db_settings, function(err, db) {
 					{nsIndex: data.nsIndex}
 				]
 			}).sort({
-				$natural: -1
+				serverTimeStamp: -1
 			}).limit(1);
 
 			results.toArray(function(err, docs) {
